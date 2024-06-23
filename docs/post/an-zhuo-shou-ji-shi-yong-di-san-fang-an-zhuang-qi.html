@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/129394230?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 什么是installer x?
+正常我们通过**系统自带**的安装包管理组件安装软件都需要各种点击，风险授权，避开广告，而installer x就可以**替代**系统自带的安装包管理组件，来实现**自动安装，后台静默**安装等操作，当然，这种权限普通用户肯定是**没有**的，需要更高的权限，软件提供了两种授权方式，一种是普通的root授权，还有一个就是我们今天要说的**通过shizuku授权** 
+
+***
+
+## shizuku是什么?  
+引用一下官方的介绍  
+>Shizuku 可以帮助普通应用借助一个由 app_process 启动的 Java 进程直接以 adb 或 root 特权使用系统 API。">
+<meta property="og:title" content="安卓手机使用第三方安装器">
+<meta property="og:description" content="## 什么是installer x?
+正常我们通过**系统自带**的安装包管理组件安装软件都需要各种点击，风险授权，避开广告，而installer x就可以**替代**系统自带的安装包管理组件，来实现**自动安装，后台静默**安装等操作，当然，这种权限普通用户肯定是**没有**的，需要更高的权限，软件提供了两种授权方式，一种是普通的root授权，还有一个就是我们今天要说的**通过shizuku授权** 
+
+***
+
+## shizuku是什么?  
+引用一下官方的介绍  
+>Shizuku 可以帮助普通应用借助一个由 app_process 启动的 Java 进程直接以 adb 或 root 特权使用系统 API。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ikun194.github.io/post/an-zhuo-shou-ji-shi-yong-di-san-fang-an-zhuang-qi.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/129394230?v=4">
+<title>安卓手机使用第三方安装器</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">安卓手机使用第三方安装器</h1>
+<div class="title-right">
+    <a href="https://ikun194.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/ikun194/ikun194.github.io/issues/3" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>什么是installer x?</h2>
+<p>正常我们通过<strong>系统自带</strong>的安装包管理组件安装软件都需要各种点击，风险授权，避开广告，而installer x就可以<strong>替代</strong>系统自带的安装包管理组件，来实现<strong>自动安装，后台静默</strong>安装等操作，当然，这种权限普通用户肯定是<strong>没有</strong>的，需要更高的权限，软件提供了两种授权方式，一种是普通的root授权，还有一个就是我们今天要说的<strong>通过shizuku授权</strong></p>
+<hr>
+<h2>shizuku是什么?</h2>
+<p>引用一下官方的介绍</p>
+<blockquote>
+<p>Shizuku 可以帮助普通应用借助一个由 app_process 启动的 Java 进程直接以 adb 或 root 特权使用系统 API。</p>
+</blockquote>
+<h3>什么是 adb？</h3>
+<p>Android 调试桥 (adb) 是一个通用命令行工具，其允许您与模拟器实例或连接的 Android 设备进行通信。它可为各种设备操作提供便利，如安装和调试应用，并提供对 Unix shell（可用来在模拟器或连接的设备上运行各种命令）的访问。</p>
+<p>更多信息请查看 <a href="https://developer.android.google.cn/studio/command-line/adb" rel="nofollow">Android Developer</a></p>
+<p>通俗来讲，就是shizuku获取到adb权限之后把它做成api给其他应用使用，这样通过shizuku配合一些软件就可以免root来做一些平常做不到的事情(因为adb权限比普通用户高，但比root权限低)</p>
+<hr>
+<h2>安装并激活shizuku</h2>
+<p>首先在手机上下载shizuku[一键下载传送门](<a href="https://apt.izzysoft.de/fdroid/repo/moe.shizuku.privileged.api_1025.apk()%EF%BC%8C%E5%AE%89%E8%A3%85%E5%B9%B6%E6%89%93%E5%BC%80%E8%BD%AF%E4%BB%B6%EF%BC%8C%E8%BF%99%E9%87%8C%E6%98%BE%E7%A4%BAshizuku%E6%9C%AA%E8%BF%90%E8%A1%8C%EF%BC%8C%E8%BF%99%E6%98%AF%E5%9B%A0%E4%B8%BA%E6%88%91%E4%BB%AC%E8%BF%98%E6%B2%A1%E6%9C%89%E6%BF%80%E6%B4%BB%EF%BC%8C%E8%BF%99%E9%87%8C%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%A4%E7%A7%8D%E6%BF%80%E6%B4%BB%E6%96%B9%E5%BC%8F%E2%88%B6" rel="nofollow">https://apt.izzysoft.de/fdroid/repo/moe.shizuku.privileged.api_1025.apk()，安装并打开软件，这里显示shizuku未运行，这是因为我们还没有激活，这里提供了两种激活方式∶</a></p>
+<hr>
+<h3>通过无线调试激活shizuku</h3>
+<p><em><strong>一下只适用于小米手机，其他手机请自行百度如何开启无线调试！！！</strong></em></p>
+<p>如果你看到了“无线调试”等字样，那么恭喜🎉，你无需电脑即可激活shizuku</p>
+<p>首先，我们要打开手机机<strong>开发者选项</strong>，点进设置-我的设备-全部参数-连续点击“MIUI版本”直到出现了**“你已经处于开发者模式”**字样<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/604a0626f3ffdb846ca2337398cb011d3c262664ab4dbb74ad8090586b1c8392/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7930396d35692e6a7067"><img src="https://camo.githubusercontent.com/604a0626f3ffdb846ca2337398cb011d3c262664ab4dbb74ad8090586b1c8392/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7930396d35692e6a7067" alt="jj" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/y09m5i.jpg" style="max-width: 100%;"></a></p>
+<p>这时我们再打开设置，找到找到“更多设置”，打开开发者选项，把<strong>USB调试，USB安装，无线调试，USB调试(安全模式)，停用adb超时授权</strong>全部勾选，如有安全警告，无视即可<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4ed525fdf922a79f8ba98cc83c9632fe4d078289b3f6abfff9050b33f36d6a5b/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f793039726d692e6a7067"><img src="https://camo.githubusercontent.com/4ed525fdf922a79f8ba98cc83c9632fe4d078289b3f6abfff9050b33f36d6a5b/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f793039726d692e6a7067" alt="3dhb" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/y09rmi.jpg" style="max-width: 100%;"></a><br>
+然后打开shizuku，点击<strong>配对</strong>，点击下方的**“打开开发者设置”**<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/36fc4bb48dd149d2d8c32bcec05988ba65fd72bca54bde34a231a147be6c2595/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7a3733626e792e6a7067"><img src="https://camo.githubusercontent.com/36fc4bb48dd149d2d8c32bcec05988ba65fd72bca54bde34a231a147be6c2595/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7a3733626e792e6a7067" alt="vvvvv" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/z73bny.jpg" style="max-width: 100%;"></a><br>
+点击下方的通过授权码配对，会出现一个6位数密码，这时打开通知栏，会发现有一条shizuku的信息，我们点开，把刚才的授权码输入进去即可完成配对<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2631c44851e371c17e99aa3e721b0f031870f65d5f5f198f7e590d0cd3a09758/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f79306166366e2e6a7067"><img src="https://camo.githubusercontent.com/2631c44851e371c17e99aa3e721b0f031870f65d5f5f198f7e590d0cd3a09758/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f79306166366e2e6a7067" alt="ddgcg" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/y0af6n.jpg" style="max-width: 100%;"></a><br>
+如果显示授权码之后立即显示配对失败，请到<strong>通知与控制中心里把通知显示设置改为原生样式</strong>，再次重试刚才的操作即可完成配对<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a3185059dea498a0ebe45102db1ee699ee3036b7b59188ef69d1073f3967c397/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7930616a77772e6a7067"><img src="https://camo.githubusercontent.com/a3185059dea498a0ebe45102db1ee699ee3036b7b59188ef69d1073f3967c397/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7930616a77772e6a7067" alt="stsfg" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/y0ajww.jpg" style="max-width: 100%;"></a><br>
+配对完成之后，打开shizuku，点击启动，稍作等待，正常情况下主页上会显示“shizuku正在运行”<br>
+动，这是就已经完成了shizuku的激活操作</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3f1414e88470aaf539400c350fe5f9f4fa3564130c09a1b04df09bab88860c65/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7930613370342e6a7067"><img src="https://camo.githubusercontent.com/3f1414e88470aaf539400c350fe5f9f4fa3564130c09a1b04df09bab88860c65/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7930613370342e6a7067" alt="dkdjdug" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/y0a3p4.jpg" style="max-width: 100%;"></a></p>
+<p><strong>注意∶激活状态并不是永久的，每次重启手机都要重新激活，所以激活成功之后不要关闭USB调试，下次打开shizuku直接点击启动即可</strong></p>
+<hr>
+<h3>通过电脑adb命令来激活</h3>
+<p><strong>请注意：如果你的shizuku上有“无线调试”的选项，说明你的设备支持该功能，adb命令是给安卓10以下不支持无线调试的设备使用的，能用无线调试请尽量用无线调试</strong><br>
+如果你的shizuku打开之后没有“无线调试”的选项，那么说明你的设备不支持，请准备好一下材料</p>
+<ul>
+<li>你的手机</li>
+<li>一根能插入你手机的<strong>数据线</strong></li>
+<li>一台能正常联网的电脑</li>
+</ul>
+<p>首先要在电脑上安装adb***<a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip" rel="nofollow">一键下载传送门，请在电脑上打开</a>***<br>
+下载好之后解压，用你的手机数据线连接你的手机和电脑，<strong>当手机弹出是否允许USB调试时，点击允许</strong>，打开解压之后的文件夹，在一个空白的地方同时按住shift键+鼠标右键，点击“在此处打开powershell窗口”首先输入以下命令查看是否连接成功∶ <code class="notranslate">./adb devices</code> 如果连接正常，会出现这样的内容∶</p>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate">List of devices attached
+
+XXX      device</pre></div>
+<p>然后输入以下命令来激活shizuku∶</p>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate">./adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</pre></div>
+<p>再次打开shizuku可以看到已经显示运行中了，这时就可以拔掉数据线了<br>
+<strong>注意∶激活状态并不是永久的，每次重启手机都要重新连接电脑激活</strong></p>
+<hr>
+<h2>installer x的安装和配置</h2>
+<p>首先在手机上安装installer x软件***<a href="https://github.com/iamr0s/InstallerX/releases/download/v1.7/InstallerX_v1.7.24.apk">一键下载传送门</a>，然后打开软件，在下方的设置里，更改授权器为shizuku和安装方式，不同的安装方式有一下差别<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/706a9ea6768b931be8702a5de994f94ee8d3141419f8d404cfd8e8cca71fd480/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7a65613536322e6a7067"><img src="https://camo.githubusercontent.com/706a9ea6768b931be8702a5de994f94ee8d3141419f8d404cfd8e8cca71fd480/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7a65613536322e6a7067" alt="sksh" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/zea562.jpg" style="max-width: 100%;"></a></p>
+<ul>
+<li>对话框:点击apk文件之后弹出一个需要手动点击确认才能安装的对话框</li>
+<li>对话框自动:和对话框一样，只不过不需要手动点击了</li>
+<li>通知栏:点击apk文件之后再系统通知栏发送一条需要手动确认安装的信息</li>
+<li>通知栏自动:和通知栏一样，只不过不需要手动点击安装了（这才是真正的后台无感安装)<br>
+然后点击<strong>锁定为默认安装器</strong>，在弹出的授权页面了点击<strong>始终允许</strong><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/91e493cea9ee81de4740ed7339137a8cdb16006aaa52cd85e68cd05f1213f4e5/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7a676d6835712e6a7067"><img src="https://camo.githubusercontent.com/91e493cea9ee81de4740ed7339137a8cdb16006aaa52cd85e68cd05f1213f4e5/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32352f7a676d6835712e6a7067" alt="zhzgx" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/25/zgmh5q.jpg" style="max-width: 100%;"></a><br>
+这时就已经完成了全部步骤，就可以打开一个安装包逝逝啦！<br>
+<em><strong>请注意，installer x 和shizuku必须都允许才能正常安装软件，没有shizuku的授权使用installer x安装软件会报错，必要时请打开两个软件的自启动权限和把省电策略改为不限制（按住应用的图标，点击应用信息，就可以更改自启动和省电策略）</strong></em></li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://ikun194.github.io"> 能的博客 </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","ikun194/ikun194.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
