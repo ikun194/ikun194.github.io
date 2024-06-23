@@ -5,7 +5,8 @@
     "GMEEK_VERSION":"last",
     "startSite":"06/23/2024",
     "urlMode":"issure",
-    "bottomText":"嘻嘻😁"
+    "bottomText":"嘻嘻😁",
+    "singlePage":["about"]
 
 
 }
