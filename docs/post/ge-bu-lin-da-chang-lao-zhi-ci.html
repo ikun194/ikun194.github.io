@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="icon" href="https://avatars.githubusercontent.com/u/129394230?v=4"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -75,8 +75,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>今后，我们将天各一方，再也不见。但请不要留恋，不要难舍我的孩子。还记得群山之中那座最高的山峰吗，那里有我们一族建造的祭坛，哥布林一族的祭司们就在那里，他们会在群山之巅为你们祈祷，为你们祝福。祈祷微风能吹走你们的烦恼，细雨会洗刷你们的泥泞，白云将为你们拖挡天灾，阳光驱散你们道路上的迷雾。祝福每一个脱离族群的幸运儿能够在他们的女骑士，女法师，女战士，女猎人，圣女，女王，公主身边永远幸福，永远健康！</p>
 <p>你已经到了森林与城镇的边界了。走吧孩子，牵起她的手，跟着她的脚步，别回头。在此祝愿你和你的女骑士能够幸福的共度余生。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">嘻嘻😁</div>
+
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
+
 </div>
     <div id="footer">Copyright © <span id="year"></span><a href="https://ikun194.github.io"> 能大の日常 </a>
 <p>
@@ -131,6 +133,8 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5p
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
 
 function openComments(){
     cm=document.getElementById("comments");

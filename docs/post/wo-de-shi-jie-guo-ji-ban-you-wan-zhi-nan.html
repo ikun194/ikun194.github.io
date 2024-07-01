@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="icon" href="https://avatars.githubusercontent.com/u/129394230?v=4"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -124,8 +124,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9c9069de6285fe032b839c2ca6ce2c3a18ab4d0860af7cc8a4c9e7b6bfab2466/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32332f73756c626d642e706e67"><img src="https://camo.githubusercontent.com/9c9069de6285fe032b839c2ca6ce2c3a18ab4d0860af7cc8a4c9e7b6bfab2466/68747470733a2f2f696d672e626561723535362e78797a3a32303038312f692f323032332f30392f32332f73756c626d642e706e67" alt="image" data-canonical-src="https://img.bear556.xyz:20081/i/2023/09/23/sulbmd.png" style="max-width: 100%;"></a></p>
 <p><strong>如果一切顺利的话，你就可以开始愉快的玩耍了！</strong></p></div>
 <div style="font-size:small;margin-top:8px;float:right;">嘻嘻😁</div>
+
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
 <div class="comments" id="comments"></div>
+
 </div>
     <div id="footer">Copyright © <span id="year"></span><a href="https://ikun194.github.io"> 能大の日常 </a>
 <p>
@@ -185,6 +187,8 @@ cmButton=document.getElementById("cmButton");
     span.setAttribute("class","Counter");
     span.innerHTML="1";
     cmButton.appendChild(span);
+
+
 function openComments(){
     cm=document.getElementById("comments");
     cmButton=document.getElementById("cmButton");
