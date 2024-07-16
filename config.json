@@ -6,7 +6,8 @@
     "startSite":"06/23/2024",
     "urlMode":"issure",
     "bottomText":"嘻嘻😁",
-    "singlePage":["about"]
+    "singlePage":["about"], 
+    "homeUrl":"https://blog.bear556.xyz"
 
 
 }
