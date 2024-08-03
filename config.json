@@ -7,7 +7,8 @@
     "urlMode":"issure",
     "bottomText":"嘻嘻😁",
     "singlePage":["about"], 
-    "homeUrl":"https://blog.bear556.xyz"
+    "homeUrl":"https://blog.bear556.xyz",
+    "allHead":"<meta name="msvalidate.01" content="B1D4B797794CC2E12652342BA7B92155" />"
 
 
 }
