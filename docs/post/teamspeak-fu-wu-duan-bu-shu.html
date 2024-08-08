@@ -11,13 +11,13 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="这两天闲的把家里吃灰了三四年的玩客云翻了出来，心血来潮想给他刷个casaos当个轻量nas用，于是马上网购了数据线，等过两天到货了再更新我是如何折腾的。">
-<meta property="og:title" content="玩客云折腾记">
-<meta property="og:description" content="这两天闲的把家里吃灰了三四年的玩客云翻了出来，心血来潮想给他刷个casaos当个轻量nas用，于是马上网购了数据线，等过两天到货了再更新我是如何折腾的。">
+<meta name="description" content="teamspeak是一款语音聊天软件，他支持把服务端部署到自己的服务器上，接下来将介绍如何部署。">
+<meta property="og:title" content="teamspeak服务端部署">
+<meta property="og:description" content="teamspeak是一款语音聊天软件，他支持把服务端部署到自己的服务器上，接下来将介绍如何部署。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://blog.bear556.xyz/post/wan-ke-yun-zhe-teng-ji.html">
+<meta property="og:url" content="https://blog.bear556.xyz/post/teamspeak-fu-wu-duan-bu-shu.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/129394230?v=4">
-<title>玩客云折腾记</title>
+<title>teamspeak服务端部署</title>
 
 
 
@@ -49,7 +49,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">玩客云折腾记</h1>
+<h1 class="postTitle">teamspeak服务端部署</h1>
 <div class="title-right">
     <a href="https://blog.bear556.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -57,7 +57,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/ikun194/ikun194.github.io/issues/13" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/ikun194/ikun194.github.io/issues/14" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -73,8 +73,26 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>这两天闲的把家里吃灰了三四年的玩客云翻了出来，心血来潮想给他刷个casaos当个轻量nas用，于是马上网购了数据线，等过两天到货了再更新我是如何折腾的。<br>
-（你问我现在发他干什么，因为我闲🙂）</p></div>
+<div class="markdown-body" id="postBody"><p>teamspeak是一款语音聊天软件，他支持把服务端部署到自己的服务器上，接下来将介绍如何部署。</p>
+<h2>准备工作</h2>
+<ul>
+<li>linux系统，我这里是Ubuntu22.04</li>
+<li>docker环境，没有的话可以使用<code class="notranslate">curl -fsSL https://get.docker.com -o get-docker.sh sh get-docker.sh</code>来安装。</li>
+</ul>
+<h2>安装并配置</h2>
+<p>使用ssh链接到服务器，使用这个命令来安装teamspeak的docker容器:</p>
+<pre class="notranslate"><code class="notranslate">docker run -p 9987:9987/udp -p 10011:10011 -p 10022:10022 -p 10080:10080
+</code></pre>
+<p>安装成功后放行服务器防火墙（或者安全组）的TCP 41144，10022，10080，30033，10011，10443，9000，和UDP 9987端口。</p>
+<p>然后输入<code class="notranslate">docker ps -a</code>，找到teamspeak前面的字符为容器id，使用<code class="notranslate">docker logs -f [容器id]</code>查看日志，在下面I M P O R T A N T下面找到token，把他复制下来，<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0e8f2ff1823a0f401efb963afaad47b74fafa6e50f5fa2cbe8ff2b1fca15a39c/68747470733a2f2f696d672e626561723535362e78797a2f692f323032342f30382f30382f6a33716a6c322e706e67"><img src="https://camo.githubusercontent.com/0e8f2ff1823a0f401efb963afaad47b74fafa6e50f5fa2cbe8ff2b1fca15a39c/68747470733a2f2f696d672e626561723535362e78797a2f692f323032342f30382f30382f6a33716a6c322e706e67" alt="image" data-canonical-src="https://img.bear556.xyz/i/2024/08/08/j3qjl2.png" style="max-width: 100%;"></a><br>
+打开你的teamspeak客户端（我这里用ts5来演示）输入你的服务器ip，连接成功后会出现输入权限密钥，把你刚刚复制的token粘贴进去，就可以获取服务器的管理权限了。</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8e147ce4520ea6e474744c8a83d42915c7973ba62f59dd3694ed47b685e973c3/68747470733a2f2f696d672e626561723535362e78797a2f692f323032342f30382f30382f6a346a396b382e706e67"><img src="https://camo.githubusercontent.com/8e147ce4520ea6e474744c8a83d42915c7973ba62f59dd3694ed47b685e973c3/68747470733a2f2f696d672e626561723535362e78797a2f692f323032342f30382f30382f6a346a396b382e706e67" alt="image" data-canonical-src="https://img.bear556.xyz/i/2024/08/08/j4j9k8.png" style="max-width: 100%;"></a></p>
+<p>需要注意的是，服务器日志里的权限密钥是一次性的，在你成功登录客户端之后就会失效，你可以重新生成一个密钥来做备份，请到服务器的管理页面-权限密钥-点击serveradmin组-生成密钥<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/73cdcb1f3911faea55fbb30f22ca3b38fd88d21f0abbb7ffc06d7f4fbe9d1e1d/68747470733a2f2f696d672e626561723535362e78797a2f692f323032342f30382f30382f6a35346179672e706e67"><img src="https://camo.githubusercontent.com/73cdcb1f3911faea55fbb30f22ca3b38fd88d21f0abbb7ffc06d7f4fbe9d1e1d/68747470733a2f2f696d672e626561723535362e78797a2f692f323032342f30382f30382f6a35346179672e706e67" alt="image" data-canonical-src="https://img.bear556.xyz/i/2024/08/08/j54ayg.png" style="max-width: 100%;"></a></p>
+<p>复制下来并妥善保管，任何拥有此密钥的人都会获得你服务器你管理权限。</p>
+<h2>完成</h2>
+<p>现在你就可以香你的朋友分享你的teamspeak服务器的地址并语音开黑了</p></div>
 <div style="font-size:small;margin-top:8px;float:right;">嘻嘻😁</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
