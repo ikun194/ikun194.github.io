@@ -10,7 +10,10 @@ docker run -p 9987:9987/udp -p 10011:10011 -p 10022:10022 -p 10080:10080
 ~~~  
 安装成功后放行服务器防火墙（或者安全组）的TCP 41144，10022，10080，30033，10011，10443，9000，和UDP 9987端口。   
 
-然后输入`docker ps -a`，找到teamspeak前面的字符为容器id，使用`docker logs -f [容器id]`查看日志，在下面I M P O R T A N T下面找到token，把他复制下来，  
+然后输入`docker ps -a`，找到teamspeak前面的字符为容器id，使用`docker logs -f [容器id]`查看日志  
+![image](https://img.bear556.xyz/i/2024/08/08/nt0bhx.png)
+
+在下面I M P O R T A N T下面找到token，把他复制下来，  
 ![image](https://img.bear556.xyz/i/2024/08/08/j3qjl2.png)
 打开你的teamspeak客户端（我这里用ts5来演示）输入你的服务器ip，连接成功后会出现输入权限密钥，把你刚刚复制的token粘贴进去，就可以获取服务器的管理权限了。  
 
