@@ -1,5 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>能大の日常</title><link>https://blog.bear556.xyz</link><description>莫愁千里路，自有到来风。</description><copyright>能大の日常</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/129394230?v=4</url><title>avatar</title><link>https://blog.bear556.xyz</link></image><lastBuildDate>Thu, 08 Aug 2024 07:31:44 +0000</lastBuildDate><managingEditor>能大の日常</managingEditor><ttl>60</ttl><webMaster>能大の日常</webMaster><item><title>提问的智慧</title><link>https://blog.bear556.xyz/post/ti-wen-de-zhi-hui.html</link><description>转载，[访问原帖](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md?plain=1)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>能大の日常</title><link>https://blog.bear556.xyz</link><description>莫愁千里路，自有到来风。</description><copyright>能大の日常</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/129394230?v=4</url><title>avatar</title><link>https://blog.bear556.xyz</link></image><lastBuildDate>Sun, 11 Aug 2024 08:29:01 +0000</lastBuildDate><managingEditor>能大の日常</managingEditor><ttl>60</ttl><webMaster>能大の日常</webMaster><item><title>使用docsify+GitHubPages搭建静态文档站</title><link>https://blog.bear556.xyz/post/shi-yong-docsify%2BGitHubPages-da-jian-jing-tai-wen-dang-zhan.html</link><description>我建的站：[赛博扫盲手册](https://pcbook.top)&#13;
+&#13;
+# 安装docsify  &#13;
+~~~&#13;
+npm i docsify-cli -g&#13;
+ # 安装docsify&#13;
+docsify init ./docs&#13;
+ # 初始化并创建./docs文件夹&#13;
+~~~  &#13;
+安装成功了，可以看到对应目录下出现了这些文件：  &#13;
+-   `index.html` 入口文件&#13;
+-   `README.md` 会做为主页内容渲染&#13;
+-   `.nojekyll` 用于阻止 GitHub Pages 忽略掉下划线开头的文件  &#13;
+&#13;
+现在就可以编辑`README.md`来修改主页内容了，你也可以使用`docsify serve ./docs`来在本机3000端口上启动一个实时更新的开发服务器来查看你的更改。</description><guid isPermaLink="true">https://blog.bear556.xyz/post/shi-yong-docsify%2BGitHubPages-da-jian-jing-tai-wen-dang-zhan.html</guid><pubDate>Sun, 11 Aug 2024 08:28:23 +0000</pubDate></item><item><title>提问的智慧</title><link>https://blog.bear556.xyz/post/ti-wen-de-zhi-hui.html</link><description>转载，[访问原帖](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md?plain=1)&#13;
 &#13;
 # 提问的智慧&#13;
 &#13;
